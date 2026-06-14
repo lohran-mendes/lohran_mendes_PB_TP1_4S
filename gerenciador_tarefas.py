@@ -45,12 +45,13 @@ def adicionar_tarefa():
         )
         if urgencia_input == 1:
             urgencia = Urgencia.PEQUENA
-        elif urgencia_input != 2:
+        elif urgencia_input == 2:
             urgencia = Urgencia.NORMAL
-        elif urgencia_input != 3:
+        elif urgencia_input == 3:
             urgencia = Urgencia.ALTA
         else:
             print("O valor inserido não é um número válido!")
+            return
     except ValueError:
         print("O valor inserido não é um número válido!")
         return
@@ -96,7 +97,7 @@ def marcar_tarefa_como_concluida():
         int(input("\nInsira o identificador da tarefa a ser marcada como concluída: "))
         - 1
     )
-    if index <= len(lista_de_tarefas):
+    if 0 <= index < len(lista_de_tarefas):
         lista_de_tarefas[index].status = Status.CONCLUIDA
         print("Tarefa marcada como concluída com sucesso!")
         return
